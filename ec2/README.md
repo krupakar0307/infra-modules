@@ -6,14 +6,25 @@ This is a ec2 module to spin up instance in default or seperate VPC.
 ## with-out VPC (ec2 launches in default vpc)
 
 ```sh
+
+
+provider "aws" {
+  region = "ap-south-1"
+}
+
 module "ec2" {
-    source = "git::h"
-    region = 
-    vpc_create = false # if need ec2 in own vpc, enable it.
-    ami_value = ""
-    instance_size = ""
-    instance_count = ""
-    key_name = "" 
+    source = "git::https://github.com/krupakar0307/terraform-module.git//ec2"
+    region = "ap-south-1"
+    vpc_create = false # if need ec2 in own vpc, disable it.
+    vpc_cidr = ""
+    vpc_name = ""
+    Environment = ""
+    a_z = [""]
+    public_cidr = [""]
+    ami_value = "ami-0a11b74e4c74e3790"
+    instance_size = "t2.micro"
+    instance_count = "2"
+    key_name = "keyName" 
 }
 
 ```
@@ -24,23 +35,25 @@ module "ec2" {
 
 ```sh
 
-module "ec2" {
-    source = "git::h"
-    region = "ap-south-1"
+provider "aws" {
+  region = "ap-south-1"
+}
 
+module "ec2" {
+    source = "git::https://github.com/krupakar0307/terraform-module.git//ec2"
+    region = "ap-south-1"
     vpc_create = true # if need ec2 in own vpc, disable it.
     vpc_cidr = "10.0.0.0/16"
     vpc_name = "vpc-dev"
-    Environment = ""
-    a_z = ""
-    public_cidr = ""
-
-
-    ami_value = ""
-    instance_size = ""
-    instance_count = ""
-    key_name = "" 
-
+    Environment = "dev"
+    a_z = [ "ap-south-1a" ]
+    public_cidr = [ "10.0.1.0/24"]
+    ami_value = "ami-0a11b74e4c74e3790"
+    instance_size = "t2.micro"
+    instance_count = "2"
+    key_name = "key_name" 
 }
+
+When VPC is false, put empty string for vpc input variables.
 
 ```
