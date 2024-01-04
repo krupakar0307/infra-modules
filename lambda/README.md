@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 module "lambda" {
-    source          = "git::https://github.com/krupakar0307/terraform-module.git//lambda"
+    source          = "git::https://github.com/krupakar0307/infra-modules.git//lambda"
     lambda_role_name = "lambda_role_name" ##Provide name for your role.
     region          = "ap-south-1"
     runtime         = "python3.11"

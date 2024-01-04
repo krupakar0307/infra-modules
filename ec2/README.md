@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 module "ec2" {
-    source = "git::https://github.com/krupakar0307/terraform-module.git//ec2"
+    source = "git::https://github.com/krupakar0307/infra-modules.git//ec2"
     region = "ap-south-1"
     vpc_create = false # if need ec2 in own vpc, disable it.
     vpc_cidr = ""
@@ -40,7 +40,7 @@ provider "aws" {
 }
 
 module "ec2" {
-    source = "git::https://github.com/krupakar0307/terraform-module.git//ec2"
+    source = "git::https://github.com/krupakar0307/infra-modules.git//ec2"
     region = "ap-south-1"
     vpc_create = true # if need ec2 in own vpc, disable it.
     vpc_cidr = "10.0.0.0/16"

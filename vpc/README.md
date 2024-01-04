@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 module "vpc" {
-  source            =   "git::https://github.com/krupakar0307/terraform-module.git//vpc"
+  source            =   "git::https://github.com/krupakar0307/infra-modules.git//vpc"
   region            =   "ap-south-1"
   vpc_name          =   "dev"
   vpc_cidr          =   "10.0.0.0/16"

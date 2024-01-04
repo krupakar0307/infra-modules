@@ -14,7 +14,7 @@ provider "aws" {
 }
 
 module "eks" {
-  source = "git::https://github.com/krupakar0307/terraform-module.git//eks"
+  source = "git::https://github.com/krupakar0307/infra-modules.git//eks"
 
   vpc_cidr = "10.0.0.0/16"
   vpc_name = "dev"
