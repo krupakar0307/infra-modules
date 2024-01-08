@@ -1,6 +1,10 @@
 ### EC2 Module with-in (or) without VPC
 This is a ec2 module to spin up instance in default or seperate VPC.
 
+- Create SSH key in your local where you applies terraform, that will be your key file to ssh into your instance.
+- Perform `ssh-keygen` before terraform apply. Once your key is generated in ~/.ssh folder then apply terraform.
+- Once your instance has been created, `ssh -i ~/.ssh/id_rsa ubuntu@<instance_Ip>` to login to your ec2 machine. (ubuntu user)
+
 ## Usage
 
 ## with-out VPC (ec2 launches in default vpc)

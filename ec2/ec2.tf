@@ -20,6 +20,6 @@ resource "aws_instance" "myEc2" {
 }
 
 resource "aws_key_pair" "myKeypair" {
-  key_name   = "krupakar"
+  key_name   = var.key_name
   public_key = file("~/.ssh/id_rsa.pub")
 }
