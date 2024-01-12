@@ -27,7 +27,7 @@ Copy above module code and replace with your inputs.
 Finally it will provision VPC with subnets and all.
 
 VPC RESOUCE MAP after creation with above modular code:
-[vpc resource map](vpc/assets/screenshot-1.png)
+[screenshot](vpc/assets/screenshot-1.png)
 
 --------
 
@@ -60,5 +60,11 @@ module "eks" {
 ```
 Replace with your inputs in above eks modular code and use it.
 
+- In this EKS module, will need to add RBAC and authentication process as well. (In hold...)
+
+
 ##### similarly for other modules and their usage as mentioned in their respective folder README's
+
+
+
 =================================================================
