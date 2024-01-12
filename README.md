@@ -27,7 +27,7 @@ Copy above module code and replace with your inputs.
 Finally it will provision VPC with subnets and all.
 
 VPC RESOUCE MAP after creation with above modular code:
-[vpc resource map](https://github.com/krupakar0307/infra-modules/blob/main/vpc/assets/screenshot-1.png)
+[vpc resource map](vpc/assets/screenshot-1.png)
 
 --------
 
