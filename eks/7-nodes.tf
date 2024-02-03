@@ -28,53 +28,53 @@ resource "aws_iam_role_policy_attachment" "nodes-AmazonEC2ContainerRegistryReadO
   role       = aws_iam_role.nodes.name
 }
 
-resource "aws_eks_node_group" "private-nodes" {
-  cluster_name    = aws_eks_cluster.eks.name
-  node_group_name = "private-nodes-${var.Environment}"
-  node_role_arn   = aws_iam_role.nodes.arn
-  version = aws_eks_cluster.eks.version
-  subnet_ids = concat(
-    aws_subnet.private-subnets[*].id,
-    aws_subnet.public-subnet[*].id
-  )
+# resource "aws_eks_node_group" "private-nodes" {
+#   cluster_name    = aws_eks_cluster.eks.name
+#   node_group_name = "private-nodes-${var.Environment}"
+#   node_role_arn   = aws_iam_role.nodes.arn
+#   version = aws_eks_cluster.eks.version
+#   subnet_ids = concat(
+#     aws_subnet.private-subnets[*].id,
+#     aws_subnet.public-subnet[*].id
+#   )
 
-  capacity_type  = "ON_DEMAND"
-  instance_types = ["t3.large"]
-  ami_type = "BOTTLEROCKET_x86_64"
+#   capacity_type  = var.node_capacity
+#   instance_types = [var.instance_type]
+#   # ami_type = BOTTLEROCKET_X86_64
 
-  scaling_config {
-    desired_size = 1
-    max_size     = 2
-    min_size     = 0
-  }
-
-  update_config {
-    max_unavailable = 1
-  }
-
-  labels = {
-    role = "general"
-  }
-
-
-
-  taint {
-    key    = "team"
-    value  = "devops"
-    effect = "NO_SCHEDULE"
-  }
-
-#   launch_template {
-#     name    = aws_launch_template.eks-node-amis.name
-#     version = aws_launch_template.eks-node-amis.latest_version
+#   scaling_config {
+#     desired_size = 1
+#     max_size     = 2
+#     min_size     = 0
 #   }
 
-  depends_on = [
-    aws_iam_role_policy_attachment.nodes-AmazonEKSWorkerNodePolicy,
-    aws_iam_role_policy_attachment.nodes-AmazonEKS_CNI_Policy,
-    aws_iam_role_policy_attachment.nodes-AmazonEC2ContainerRegistryReadOnly,
-  ]
-}
+#   update_config {
+#     max_unavailable = 1
+#   }
+
+#   labels = {
+#     role = "general"
+#   }
+
+
+
+#   taint {
+#     key    = "team"
+#     value  = "devops"
+#     effect = "NO_SCHEDULE"
+#   }
+
+# #   launch_template {
+# #     name    = aws_launch_template.eks-node-amis.name
+# #     version = aws_launch_template.eks-node-amis.latest_version
+# #   }
+
+#   depends_on = [
+#     aws_iam_role_policy_attachment.nodes-AmazonEKSWorkerNodePolicy,
+#     aws_iam_role_policy_attachment.nodes-AmazonEKS_CNI_Policy,
+#     aws_iam_role_policy_attachment.nodes-AmazonEC2ContainerRegistryReadOnly,
+#   ]
+# }
 resource "aws_eks_node_group" "private-nodes-2" {
   cluster_name    = aws_eks_cluster.eks.name
   node_group_name = "private-nodes-${var.Environment}-2"
@@ -84,14 +84,14 @@ resource "aws_eks_node_group" "private-nodes-2" {
     aws_subnet.private-subnets[*].id,
     aws_subnet.public-subnet[*].id
   )
-  capacity_type  = "SPOT"
-  instance_types = ["t3.large"]
-  ami_type = "BOTTLEROCKET_x86_64"
+  capacity_type  = var.node_capacity
+  instance_types = [var.instance_type]
+  ami_type = var.ami_type
 
   scaling_config {
-    desired_size = 1
-    max_size     = 2
-    min_size     = 0
+    desired_size = var.scaling_config["desired_size"]
+    max_size     = var.scaling_config["max_size"]
+    min_size     = var.scaling_config["min_size"]
   }
 
   update_config {
