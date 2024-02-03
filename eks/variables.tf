@@ -47,23 +47,23 @@ variable "cluster_version" {
 #####
 
 
-# variable "node_capacity" {
-#   type = string
-#   default = "ON_DEMAND"
-# }
-# variable "instance_type" {
-#   default = t3.micro
-#   type = string
-# }
-# variable "ami_type" {
-#   default = "BOTTLEROCKET_X86_64"
-#   type = string
-# }
-# variable "scaling_config" {
-#   type = map(number)
-#   default = {
-#     "desired_size" = 1
-#     "max_size" = 3
-#     "min_size" = 0
-#   }
-# }
+variable "node_capacity" {
+  type = string
+  default = "ON_DEMAND"
+}
+variable "instance_type" {
+  default = "t3.medium"
+  type = string
+}
+variable "ami_type" {
+  default = "BOTTLEROCKET_x86_64"
+  type = string
+}
+variable "scaling_config" {
+  type = map(number)
+  default = {
+    "desired_size" = 1
+    "max_size" = 3
+    "min_size" = 0
+  }
+}
