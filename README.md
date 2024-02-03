@@ -60,7 +60,7 @@ module "eks" {
 ```
 Replace with your inputs in above eks modular code and use it.
 
-- In this EKS module, will need to add RBAC and authentication process as well. (In hold...)
+- In this EKS module, will need to add RBAC and authentication process as well. (On hold...)
 
 
 ##### similarly for other modules and their usage as mentioned in their respective folder README's
