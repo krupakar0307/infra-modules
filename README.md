@@ -58,11 +58,11 @@ module "eks" {
   node_capacity = "SPOT"
   instance_type = "t3.medium"
   ami_type = "BOTTLEROCKET_x86_64"
-  # scaling_config = {
-  #   desired_size = 1
-  #   max_size     = 3
-  #   min_size     = 0
-  # }
+  scaling_config = {
+      desired_size = 1
+      max_size     = 3
+      min_size     = 0
+  }
 }
 
 ```
