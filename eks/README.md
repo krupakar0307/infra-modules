@@ -18,13 +18,25 @@ module "eks" {
 
   vpc_cidr = "10.0.0.0/16"
   vpc_name = "dev"
-  Environment = "demo"
+  Environment = "development"
   private_cidr =[ "10.0.1.0/24","10.0.2.0/24" ]
   a_z  = [ "ap-south-1a","ap-south-1b" ]
   public_cidr = [ "10.0.3.0/24","10.0.4.0/24" ]
-  eks_name = "demo"
-  cluster_version = 1.27
-  
+
+  ##Provide EKS speicifications
+
+  eks_name = "eks-demo"
+  cluster_version = 1.32
+
+  ##Node Specitifiactions
+
+  instance_type = "t3.medium"
+  scaling_config = {
+    min_size = 1
+    max_size = 2
+    desired_size = 1
+  }
+
 }
 ```
 
